@@ -1,32 +1,48 @@
-📚 Library Management System – Frontend
+📘 Library Management System – Frontend
+📌 Overview
 
-A Library Management System frontend built using Next.js (App Router) and TypeScript, designed to work with a Spring Boot backend.
-It supports role-based access (Admin/User), book management, borrowing functionality, and a real-time analytics dashboard.
+Frontend for a Library Management System built using Next.js (App Router) and Tailwind CSS.
+Supports Admin & User login, book management, borrowing, and a real-time dashboard.
 
-🚀 Features
-🔐 Authentication & Authorization
+🛠 Tech Stack
 
-Login system (Admin & User)
+Next.js 16
 
-Role-based UI controls
+React
+
+Tailwind CSS
+
+Recharts
+
+TypeScript
+
+✨ Features
+
+Login (Admin / User)
+
+Dashboard with charts
+
+View, search, filter books
+
+Borrow / return books (User)
+
+Add / edit / delete books (Admin)
+
+Role-based UI
+
+Session persistence using localStorage
+
+▶️ Run Locally
+npm install
+npm run dev
 
 
-📖 Book Management
+Frontend runs at:
 
-View all books
+http://localhost:3000
 
-Add / Edit / Delete books (Admin only)
+🔗 Backend
 
-Borrow / Return books (User & Admin)
+This frontend connects to:
 
-Borrowed book ownership enforced
-
-📊 Dashboard Analytics
-
-Total books
-
-Available books
-
-Borrowed books
-
-Total users 
+http://localhost:8080

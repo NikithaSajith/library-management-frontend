@@ -132,10 +132,13 @@ export default function BooksPage() {
 
 
   // DELETE
-  const handleDeleteBook = (id: number) => {
-    if (!confirm("Delete this book?")) return;
-    setBooks(prev => prev.filter(book => book.id !== id));
-  };
+ const handleDeleteBook = async (id: number) => {
+  if (!confirm("Delete this book?")) return;
+
+  await deleteBook(id);   // API call
+  setBooks(prev => prev.filter(book => book.id !== id));
+};
+
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">

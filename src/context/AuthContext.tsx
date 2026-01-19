@@ -6,7 +6,7 @@ import { User } from "@/types/user";
 type AuthContextType = {
   user: User | null;
   isLoggedIn: boolean;
-  loading: boolean; // ✅ ADD THIS
+  loading: boolean; 
   login: (user: User) => void;
   logout: () => void;
 };
@@ -15,14 +15,14 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true); // ✅
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-    setLoading(false); // ✅ IMPORTANT
+    setLoading(false); 
   }, []);
 
   const login = (userData: User) => {
@@ -40,7 +40,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       value={{
         user,
         isLoggedIn: !!user,
-        loading, // ✅
+        loading, 
         login,
         logout,
       }}
