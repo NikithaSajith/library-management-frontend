@@ -9,6 +9,8 @@ import BookTable from "./BookTable";
 
 import AddBookModal from "@/components/books/AddBookModal";
 import EditBookModal from "@/components/books/EditBookModal";
+
+
 import { Book } from "@/types/book";
 
 import { borrowBook } from "@/services/bookApi";
@@ -16,6 +18,7 @@ import { borrowBook } from "@/services/bookApi";
 
 
 import { useRouter } from "next/navigation";
+import { User } from "@/types/user";
 
 
 export default function BooksPage() {
@@ -58,6 +61,8 @@ export default function BooksPage() {
 
   const [editingBook, setEditingBook] = useState<Book | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+
 
   // DROPDOWN DATA
   const categories = Array.from(new Set(books.map(b => b.category)));
@@ -144,18 +149,37 @@ export default function BooksPage() {
     <div className="p-6 bg-gray-100 min-h-screen">
 
       {/* HEADER */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold">Books</h2>
+     <div className="flex items-center justify-between mb-4">
+  <h2 className="text-2xl font-bold">Books</h2>
 
-        {currentUserRole === "ADMIN" && (
-          <button
-            className="px-4 py-2 bg-blue-600 text-white rounded"
-            onClick={() => setIsAddModalOpen(true)}
-          >
-            Add Book
-          </button>
-        )}
-      </div>
+  {user?.role === "ADMIN" && (
+    <div className="flex gap-2">
+      <button
+        className="px-4 py-2 bg-blue-600 text-white rounded"
+        onClick={() => setIsAddModalOpen(true)}
+      >
+        Add Book
+      </button>
+
+      <button
+        className="px-4 py-2 bg-blue-600 text-white rounded"
+        onClick={() => setIsAddModalOpen(true)}
+      >
+        Add Author
+      </button>
+
+      <button
+        className="px-4 py-2 bg-blue-600 text-white rounded"
+        onClick={() => setIsAddModalOpen(true)}
+      >
+        Add Publisher
+      </button>
+   
+
+    </div>
+  )}
+</div>
+
 
       {/* SEARCH */}
       <input
@@ -217,6 +241,8 @@ export default function BooksPage() {
           onClose={() => setEditingBook(null)}
         />
       )}
+  
+
     </div>
   );
 }

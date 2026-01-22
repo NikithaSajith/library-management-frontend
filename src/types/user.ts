@@ -1,5 +1,7 @@
 export type User = {
-  id: number;
+  id?: number;
   username: string;
+  password?: string;
   role: "ADMIN" | "USER";
+  status?: number;
 };

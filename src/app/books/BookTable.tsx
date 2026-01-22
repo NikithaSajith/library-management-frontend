@@ -25,6 +25,7 @@ export default function BookTable({
         <tr>
           <th className="p-3 text-left">Book</th>
           <th className="p-3 text-left">Author</th>
+          <th className="p-3 text-left">Publisher</th>
           <th className="p-3 text-left">Category</th>
           <th className="p-3 text-left">Status</th>
           <th className="p-3 text-left">Action</th>
@@ -44,6 +45,7 @@ export default function BookTable({
           <tr key={book.id} className="border-t">
             <td className="p-3">{book.name}</td>
             <td className="p-3">{book.author}</td>
+              <td className="p-3">{book.publisher}</td>
             <td className="p-3">{book.category}</td>
 
             {/* STATUS */}

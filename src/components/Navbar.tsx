@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 
 export default function Navbar() {
-  const { user, logout } = useAuth(); // ✅ get user
+  const { user, logout } = useAuth();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -15,30 +15,28 @@ export default function Navbar() {
 
   return (
     <nav className="flex items-center justify-between px-6 py-4 bg-blue-600 text-white">
-      {/* LEFT SIDE */}
+      {/* LEFT */}
       <div className="flex items-center gap-6">
         <h1 className="text-xl font-bold">Library System</h1>
 
-        <Link href="/" className="hover:underline">
-          Dashboard
-        </Link>
+        <Link href="/">Dashboard</Link>
+        <Link href="/books">Books</Link>
 
-        <Link href="/books" className="hover:underline">
-          Books
-        </Link>
+        {/* ✅ USERS ONLY FOR ADMIN */}
+        {user?.role === "ADMIN" && (
+          <Link href="/users">Users</Link>
+        )}
       </div>
 
-      {/* RIGHT SIDE */}
+      {/* RIGHT */}
       <div className="flex items-center gap-4">
-        {user && (
-          <span className="text-sm bg-blue-500 px-3 py-1 rounded">
-            {user.role} {/* ✅ ADMIN / USER */}
-          </span>
-        )}
+        <span className="bg-blue-500 px-3 py-1 rounded text-sm">
+          {user?.role}
+        </span>
 
         <button
           onClick={handleLogout}
-          className="bg-red-500 px-3 py-1 rounded hover:bg-red-600"
+          className="bg-red-500 px-3 py-1 rounded"
         >
           Logout
         </button>
